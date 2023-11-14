@@ -7,6 +7,7 @@ import http from "http";
 import path from "path";
 
 import mongoose from "mongoose";
+import { env } from "process";
 import router from "./router/router";
 
 const app = express();
@@ -21,9 +22,14 @@ app.use(compression());
 app.use(bodyParser.json());
 
 //DB Stuff
-const MONGO_URL = "PLAECEHOLDER";
+const MONGO_URL = env.MONGODBURL;
 
 mongoose.set("strictQuery", false);
+
+if (!MONGO_URL) {
+	console.error("MONGODBURL environment variable is not set.");
+	process.exit(1); // Exit the application with an error code.
+}
 mongoose.Promise = Promise;
 mongoose.connect(MONGO_URL);
 
