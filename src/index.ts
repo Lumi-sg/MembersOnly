@@ -6,11 +6,12 @@ import express from "express";
 import http from "http";
 import path from "path";
 
+import dotenv from "dotenv";
 import mongoose from "mongoose";
-import { env } from "process";
 import router from "./router/router";
 
 const app = express();
+dotenv.config();
 
 app.use(
 	cors({
@@ -22,7 +23,7 @@ app.use(compression());
 app.use(bodyParser.json());
 
 //DB Stuff
-const MONGO_URL = env.MONGODBURL;
+const MONGO_URL = process.env.MONGODBURL;
 
 mongoose.set("strictQuery", false);
 
