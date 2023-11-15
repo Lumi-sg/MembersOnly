@@ -27,6 +27,7 @@ export const create_user_post = [
 
 			if (!errors.isEmpty()) {
 				res.render("signup", {
+					username: req.body.username,
 					errors: errors.array(),
 				});
 				console.log("error during signup");

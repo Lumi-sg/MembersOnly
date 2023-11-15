@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/signup", (req, res) => {
-	res.render("signup", { errors: [] });
+	res.render("signup", { errors: [], username: "" });
 });
 
 router.post("/signup", userController.create_user_post);
