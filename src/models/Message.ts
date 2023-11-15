@@ -14,4 +14,4 @@ MessageSchema.virtual("timePostedFormatted").get(function () {
 	return DateTime.fromJSDate(this.timePosted).toLocaleString(DateTime.DATETIME_MED);
 });
 
-module.exports = mongoose.model("Message", MessageSchema);
+export const Message = mongoose.model("Message", MessageSchema);

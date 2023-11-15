@@ -1,4 +1,5 @@
 import express from "express";
+import * as userController from "../controllers/userController";
 
 const router = express.Router();
 
@@ -8,11 +9,9 @@ router.get("/", (req, res) => {
 });
 
 router.get("/signup", (req, res) => {
-	res.render("signup");
+	res.render("signup", { errors: [] });
 });
 
-router.post("/signup", (req, res) => {
-	
-})
+router.post("/signup", userController.create_user_post);
 
 export default router;
