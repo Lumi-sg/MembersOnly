@@ -30,10 +30,10 @@ export const create_user_post = [
 					username: req.body.username,
 					errors: errors.array(),
 				});
-				console.log("error during signup");
+				console.table(`failed to create user ${user.username}`);
 			} else {
 				await user.save();
-				console.log("user created");
+				console.log(`user ${user.username} created`);
 				res.redirect("/login");
 			}
 		} catch (err) {

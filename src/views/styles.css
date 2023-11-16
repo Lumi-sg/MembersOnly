@@ -44,3 +44,10 @@ button {
 button:hover {
 	background-color: #3dbb43;
 }
+.fa {
+	color: white;
+	transition: transform 0.3s ease-in-out;
+}
+.fa:hover {
+	transform: rotate(360deg) scale(1.2);
+}

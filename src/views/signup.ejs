@@ -6,51 +6,72 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1.0"
 		/>
-		<title>User Sign Up</title>
+		<title>Lumi's Message Board</title>
 	</head>
 	<link
 		rel="stylesheet"
 		href="/styles.css"
 	/>
+	<link
+		rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+	/>
 	<body>
-		<h1>User Sign Up</h1>
+		<mainContainer>
+			<h1>Lumi's Message Board</h1>
 
-		<form
-			action="/signup"
-			method="post"
-			onsubmit="return validateForm()"
-		>
-			<label for="username">Username:</label>
-			<input
-				type="text"
-				id="username"
-				name="username"
-				value="<%= username || '' %>"
-				required
-			/>
+			<form
+				action="/signup"
+				method="post"
+				onsubmit="return validateForm()"
+			>
+				<label for="username">Username:</label>
+				<input
+					type="text"
+					id="username"
+					name="username"
+					value="<%= username || '' %>"
+					required
+				/>
 
-			<label for="password">Password:</label>
-			<input
-				type="password"
-				id="password"
-				name="password"
-				required
-			/>
+				<label for="password">Password:</label>
+				<input
+					type="password"
+					id="password"
+					name="password"
+					required
+				/>
 
-			<label for="confirmPassword">Confirm Password:</label>
-			<input
-				type="password"
-				id="confirmPassword"
-				name="confirmPassword"
-				required
-			/>
+				<label for="confirmPassword">Confirm Password:</label>
+				<input
+					type="password"
+					id="confirmPassword"
+					name="confirmPassword"
+					required
+				/>
 
-			<% if (errors && errors.length > 0) { %>
-			<p style="color: red"><%= errors[0].msg %></p>
-			<% } %>
+				<% if (errors && errors.length > 0) { %>
+				<p style="color: red"><%= errors[0].msg %></p>
+				<% } %>
 
-			<button type="submit">Sign Up</button>
-		</form>
+				<button type="submit">Sign Up</button>
+			</form>
+		</mainContainer>
+		<footer>
+			<p>
+				Built by Lumi&nbsp;&nbsp;&nbsp;<a
+					href="https://github.com/Lumi-sg/MembersOnly"
+					style="text-decoration: none"
+					target="_blank"
+					rel="noopener noreferrer"
+					><i
+						style="font-size: 24px"
+						class="fa"
+						></i
+					></a
+				>
+			</p>
+		</footer>
 
 		<script>
 			function validateForm() {
