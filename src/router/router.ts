@@ -4,14 +4,20 @@ import * as userController from "../controllers/userController";
 const router = express.Router();
 
 //Default route
-router.get("/", (req, res) => {
+router.get("/", (req: express.Request, res: express.Response) => {
 	res.redirect("signup");
 });
 
-router.get("/signup", (req, res) => {
+router.get("/signup", (req: express.Request, res: express.Response) => {
 	res.render("signup", { errors: [], username: "" });
 });
 
 router.post("/signup", userController.create_user_post);
+
+router.get("/login", (req: express.Request, res: express.Response) => {
+	res.render("login");
+});
+
+router.post("/login", userController.login_user_post)
 
 export default router;

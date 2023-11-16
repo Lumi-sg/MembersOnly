@@ -19,19 +19,17 @@
 	<body>
 		<div class="mainContainer">
 			<h1>Lumi's Message Board</h1>
-			<h3>Sign Up Form</h3>
+			<h3>Login Form</h3>
 
 			<form
-				action="/signup"
+				action="/login"
 				method="post"
-				onsubmit="return validateForm()"
 			>
 				<label for="username">Username:</label>
 				<input
 					type="text"
 					id="username"
 					name="username"
-					value="<%= username || '' %>"
 					required
 				/>
 
@@ -43,19 +41,8 @@
 					required
 				/>
 
-				<label for="confirmPassword">Confirm Password:</label>
-				<input
-					type="password"
-					id="confirmPassword"
-					name="confirmPassword"
-					required
-				/>
 
-				<% if (errors && errors.length > 0) { %>
-				<p style="color: red"><%= errors[0].msg %></p>
-				<% } %>
-
-				<button type="submit">Sign Up</button>
+				<button type="submit">Login</button>
 			</form>
 		</mainContainer>
 		<footer class="footer">
@@ -74,18 +61,5 @@
 			</p>
 		</footer>
 
-		<script>
-			function validateForm() {
-				let password = document.getElementById("password").value;
-				let confirmPassword = document.getElementById("confirmPassword").value;
-
-				if (password !== confirmPassword) {
-					alert("Passwords do not match!");
-					return false;
-				}
-
-				return true;
-			}
-		</script>
 	</body>
 </html>

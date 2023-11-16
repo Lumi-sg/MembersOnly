@@ -3,7 +3,9 @@ import compression from "compression";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import express from "express";
+import session from "express-session";
 import http from "http";
+import passport from "passport";
 import path from "path";
 
 import dotenv from "dotenv";
@@ -56,7 +58,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "views")));
 
 // //Middleware
-
+app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 // Default route
 app.use("/", router);
 
