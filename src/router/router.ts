@@ -1,4 +1,5 @@
 import express from "express";
+import passport from "passport";
 import * as userController from "../controllers/userController";
 
 const router = express.Router();
@@ -18,6 +19,6 @@ router.get("/login", (req: express.Request, res: express.Response) => {
 	res.render("login");
 });
 
-router.post("/login", userController.login_user_post)
+router.post("/login", userController.login_user_post);
 
 export default router;

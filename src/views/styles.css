@@ -19,9 +19,10 @@ body {
 
 form {
 	background-color: #202020;
-	padding: 20px;
+	padding: 2rem;
 	border-radius: 8px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	width: 15%;
 }
 
 label {
@@ -65,4 +66,16 @@ button:hover {
 	align-items: center;
 	position: fixed;
 	bottom: 0;
+}
+
+.loginButton {
+	background-color: darkslategray;
+}
+.loginButton:hover {
+	background-color: rgb(73, 122, 122);
+}
+
+.buttonContainer {
+	display: flex;
+	justify-content: space-around;
 }
