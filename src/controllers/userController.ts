@@ -3,7 +3,7 @@ import express from "express";
 import asyncHandler from "express-async-handler";
 import { body, validationResult } from "express-validator";
 import passport from "passport";
-import { UserModel } from "../models/User";
+import { UserDocument, UserModel } from "../models/User";
 
 export const create_user_post = [
 	body("username")
@@ -82,11 +82,13 @@ export const membership_user_post = asyncHandler(
 	async (req: express.Request, res: express.Response) => {
 		const memberPassword = "odinproject";
 		const submittedPassword = req.body.password;
-		const username = req.body.username;
+		const user = req.user as UserDocument;
 
 		if (submittedPassword === memberPassword) {
+			user.membershipStatus = true;
+			await user.save();
+
 			res.redirect("/index");
-			console.log(username);
 		} else {
 			res.redirect("/login");
 		}

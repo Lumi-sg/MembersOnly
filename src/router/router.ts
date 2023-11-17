@@ -27,22 +27,26 @@ router.get("/login", (req: express.Request, res: express.Response) => {
 
 router.post("/login", userController.login_user_post);
 
-router.get("/index", (req: express.Request, res: express.Response) => {
+router.get("/membership", (req: express.Request, res: express.Response) => {
 	const user = req.user;
 
-	res.render("index", { user });
+	res.render("membership", { user });
 });
 
-router.post("/index", userController.membership_user_post);
+router.post("/membership", userController.membership_user_post);
+
+router.get("/index", (req: express.Request, res: express.Response) => {
+	res.render("index");
+});
 
 router.get(
-	"/log-out",
+	"/logout",
 	(req: express.Request, res: express.Response, next: express.NextFunction) => {
 		req.logout((err) => {
 			if (err) {
 				return next(err);
 			}
-			res.redirect("/");
+			res.redirect("/login");
 		});
 	}
 );
