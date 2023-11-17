@@ -28,13 +28,9 @@ router.get("/login", (req: express.Request, res: express.Response) => {
 router.post("/login", userController.login_user_post);
 
 router.get("/index", (req: express.Request, res: express.Response) => {
-	// Check if a user is authenticated
-	const isAuthenticated = req.isAuthenticated();
+	const user = req.user;
 
-	// Access user data if authenticated
-	const user = isAuthenticated ? req.user : null;
-
-	res.render("index", { isAuthenticated, user });
+	res.render("index", { user });
 });
 
 router.post("/index", userController.membership_user_post);

@@ -15,7 +15,9 @@
 	/>
 	<body>
 		<div class="mainContainer">
-			<p>Hello, <%= user.username %>!</p>
+			<% if (user) { %>
+
+			<p>Hello, <strong><%= user.username %></strong>!</p>
 			<form
 				action="/index"
 				method="post"
@@ -29,8 +31,23 @@
 				/>
 
 				<button type="submit">Submit</button>
+				<% } else { %>
+				<button
+					type="button"
+					class="loginButton"
+					onclick="goToLogin()"
+				>
+					Login Page
+				</button>
+				<% } %>
 			</form>
 		</div>
 		<%- include('footer.ejs') %>
+		<script>
+			function goToLogin() {
+				console.log("Button clicked!"); // Add this line
+				window.location.href = "/login";
+			}
+		</script>
 	</body>
 </html>
