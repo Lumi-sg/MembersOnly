@@ -22,13 +22,20 @@ export const create_user_post = [
 			const errors = validationResult(req);
 
 			const { username, password } = req.body;
+			const takenUsername = await UserModel.findOne({ username });
 
 			if (!errors.isEmpty()) {
 				res.render("signup", {
 					username,
 					errors: errors.array(),
 				});
-				console.table(`Failed to create user ${username}`);
+				console.log(`Failed to create user ${username}`);
+			} else if (takenUsername) {
+				res.render("signup", {
+					username,
+					errors: [{ msg: "Username already taken" }],
+				});
+				console.log(`Failed to create user ${username}! Username already taken.`);
 			} else {
 				const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -39,7 +46,6 @@ export const create_user_post = [
 
 				await user.save();
 				console.log(`User ${username} created`);
-				console.log("redirecting to login page");
 				res.redirect(`/login?username=${encodeURIComponent(username)}`);
 			}
 		} catch (err) {

@@ -21,4 +21,8 @@ router.get("/login", (req: express.Request, res: express.Response) => {
 
 router.post("/login", userController.login_user_post);
 
+router.get("/index", (req: express.Request, res: express.Response) => {
+	res.render("index");
+});
+
 export default router;
