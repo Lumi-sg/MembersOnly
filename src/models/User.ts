@@ -2,11 +2,11 @@ import mongoose, { Document } from "mongoose";
 
 const Schema = mongoose.Schema;
 
-export interface UserDocument extends Document {
+export type UserDocument = Document & {
 	username: string;
 	password: string;
 	membershipStatus: boolean;
-}
+};
 
 const UserSchema = new Schema<UserDocument>({
 	username: { type: String, required: true, minLength: 2, maxLength: 25 },

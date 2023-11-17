@@ -65,7 +65,7 @@ app.use(passport.session());
 app.use("/", router);
 
 const server = http.createServer(app);
-const port = 8081;
+const port = 3000;
 server.listen(port, () => {
 	console.log(`Server running on http://localhost:${port}`);
 });

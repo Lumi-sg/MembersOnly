@@ -40,7 +40,7 @@ export const create_user_post = [
 				await user.save();
 				console.log(`User ${username} created`);
 				console.log("redirecting to login page");
-				res.render("login");
+				res.redirect(`/login?username=${encodeURIComponent(username)}`);
 			}
 		} catch (err) {
 			console.error("Error during user creation:", err);

@@ -30,6 +30,7 @@
 					type="text"
 					id="username"
 					name="username"
+					value="<%= typeof username !== 'undefined' ? username : '' %>"
 					required
 				/>
 
@@ -40,7 +41,6 @@
 					name="password"
 					required
 				/>
-
 
 				<button type="submit">Login</button>
 			</form>

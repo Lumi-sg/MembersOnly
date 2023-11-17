@@ -16,7 +16,7 @@ router.get("/signup", (req: express.Request, res: express.Response) => {
 router.post("/signup", userController.create_user_post);
 
 router.get("/login", (req: express.Request, res: express.Response) => {
-	res.render("login");
+	res.render("login", { username: req.query.username || "" });
 });
 
 router.post("/login", userController.login_user_post);
