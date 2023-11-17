@@ -41,25 +41,12 @@
 					name="password"
 					required
 				/>
-
+				<% if (errorMessage) { %>
+				<p style="color: red"><%= errorMessage %></p>
+				<% } %>
 				<button type="submit">Login</button>
 			</form>
-		</mainContainer>
-		<footer class="footer">
-			<p>
-				Built by Lumi&nbsp;&nbsp;&nbsp;<a
-					href="https://github.com/Lumi-sg/MembersOnly"
-					style="text-decoration: none"
-					target="_blank"
-					rel="noopener noreferrer"
-					><i
-						style="font-size: 24px"
-						class="fa"
-						></i
-					></a
-				>
-			</p>
-		</footer>
-
+		</div>
+		<%- include('footer.ejs') %>
 	</body>
 </html>

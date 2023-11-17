@@ -55,7 +55,40 @@ export const create_user_post = [
 	}),
 ];
 
-export const login_user_post = passport.authenticate("local", {
-	successRedirect: "/index",
-	failureRedirect: "/login",
-});
+export const login_user_post = (
+	req: express.Request,
+	res: express.Response,
+	next: express.NextFunction
+) => {
+	passport.authenticate("local", (err: any, user: any, info: any) => {
+		if (err) {
+			return next(err);
+		}
+		if (!user) {
+			// Access the error message from info
+			const errorMessage = info && info.message ? info.message : "Unknown error.";
+			return res.render("login", { errorMessage });
+		}
+		req.logIn(user, (err) => {
+			if (err) {
+				return next(err);
+			}
+			return res.redirect("/index");
+		});
+	})(req, res, next);
+};
+
+export const membership_user_post = asyncHandler(
+	async (req: express.Request, res: express.Response) => {
+		const memberPassword = "odinproject";
+		const submittedPassword = req.body.password;
+		const username = req.body.username;
+
+		if (submittedPassword === memberPassword) {
+			res.redirect("/index");
+			console.log(username);
+		} else {
+			res.redirect("/login");
+		}
+	}
+);

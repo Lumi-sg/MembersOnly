@@ -10,6 +10,7 @@ import mongoose from "mongoose";
 import passport from "passport";
 import path from "path";
 import "./auth/passportConfig";
+import { UserModel } from "./models/User";
 import router from "./router/router";
 
 const app = express();
@@ -48,6 +49,28 @@ mongoose.connection.on("close", () => {
 	console.log("Disconnected from MongoDB");
 });
 
+// //Middleware
+app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.serializeUser((user: any, done) => {
+	done(null, user.id);
+});
+
+passport.deserializeUser(async (id: string, done) => {
+	try {
+		const user = await UserModel.findById(id);
+		done(null, user);
+	} catch (error) {
+		done(error);
+	}
+});
+
+app.use((req, res, next) => {
+	res.locals.user = req.user;
+	next();
+});
+
 //View Engine
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -57,10 +80,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "views")));
 
-// //Middleware
-app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
-app.use(passport.initialize());
-app.use(passport.session());
 // Default route
 app.use("/", router);
 

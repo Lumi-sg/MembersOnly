@@ -14,6 +14,22 @@
 		href="/styles.css"
 	/>
 	<body>
-		<h1>Hello, {{ username }}!</h1>
+		<div class="mainContainer">
+			<form
+				action="/index"
+				method="post"
+			>
+				<label for="password">Membership password:</label>
+				<input
+					type="password"
+					id="password"
+					name="password"
+					required
+				/>
+
+				<button type="submit">Submit</button>
+			</form>
+		</div>
+		<%- include('footer.ejs') %>
 	</body>
 </html>

@@ -1,59 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lumi's Message Board</title>
-</head>
-<link rel="stylesheet" href="/styles.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-<body>
-  <div class="mainContainer">
-    <h1>Lumi's Message Board</h1>
-    <h3>Sign Up Form</h3>
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Lumi's Message Board</title>
+	</head>
+	<link
+		rel="stylesheet"
+		href="/styles.css"
+	/>
+	<link
+		rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+	/>
+	<body>
+		<div class="mainContainer">
+			<h1>Lumi's Message Board</h1>
+			<h3>Sign Up Form</h3>
 
-    <form action="/signup" method="post" onsubmit="return validateForm()">
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" value="<%= username || '' %>" required />
+			<form
+				action="/signup"
+				method="post"
+				onsubmit="return validateForm()"
+			>
+				<label for="username">Username:</label>
+				<input
+					type="text"
+					id="username"
+					name="username"
+					value="<%= username || '' %>"
+					required
+				/>
 
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required />
+				<label for="password">Password:</label>
+				<input
+					type="password"
+					id="password"
+					name="password"
+					required
+				/>
 
-      <label for="confirmPassword">Confirm Password:</label>
-      <input type="password" id="confirmPassword" name="confirmPassword" required />
+				<label for="confirmPassword">Confirm Password:</label>
+				<input
+					type="password"
+					id="confirmPassword"
+					name="confirmPassword"
+					required
+				/>
 
-      <% if (errors && errors.length > 0) { %>
-      <p style="color: red"><%= errors[0].msg %></p>
-      <% } %>
-	<div class="buttonContainer">
-      <button type="submit">Sign Up</button>
-      <button type="button" class="loginButton"onclick="goToLogin()">Login Page</button>
-	</div>
-    </form>
-  </mainContainer>
-  <footer class="footer">
-    <p>
-      Built by Lumi&nbsp;&nbsp;&nbsp;<a href="https://github.com/Lumi-sg/MembersOnly" style="text-decoration: none" target="_blank" rel="noopener noreferrer"><i style="font-size: 24px" class="fa"></i></a>
-    </p>
-  </footer>
+				<% if (errors && errors.length > 0) { %>
+				<p style="color: red"><%= errors[0].msg %></p>
+				<% } %>
+				<div class="buttonContainer">
+					<button type="submit">Sign Up</button>
+					<button
+						type="button"
+						class="loginButton"
+						onclick="goToLogin()"
+					>
+						Login Page
+					</button>
+				</div>
+			</form>
+		</div>
+		<%- include('footer.ejs') %>
 
-  <script>
-    function validateForm() {
-      let password = document.getElementById("password").value;
-      let confirmPassword = document.getElementById("confirmPassword").value;
+		<script>
+			function validateForm() {
+				let password = document.getElementById("password").value;
+				let confirmPassword = document.getElementById("confirmPassword").value;
 
-      if (password !== confirmPassword) {
-        alert("Passwords do not match!");
-        return false;
-      }
+				if (password !== confirmPassword) {
+					alert("Passwords do not match!");
+					return false;
+				}
 
-      return true;
-    }
+				return true;
+			}
 
-    function goToLogin() {
-		console.log('Button clicked!'); // Add this line
-      window.location.href = "/login";
-    }
-  </script>
-</body>
+			function goToLogin() {
+				console.log("Button clicked!"); // Add this line
+				window.location.href = "/login";
+			}
+		</script>
+	</body>
 </html>
