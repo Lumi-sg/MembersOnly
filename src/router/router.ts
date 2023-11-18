@@ -55,6 +55,8 @@ router.get("/messages", messageController.messages_get);
 
 router.get("/messageform", messageController.messageform_get);
 
+router.post("/messageform", messageController.messageform_post);
+
 router.get(
 	"/logout",
 	(req: express.Request, res: express.Response, next: express.NextFunction) => {

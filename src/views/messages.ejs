@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Messages</title>
+	</head>
+	<body>
+		<div class="mainContainer">
+			<% if (user) { %>
+			<h3>Hello, <%= user.username %></h3>
+			<%} %>
+			<div class="messageContainer">
+				<% if (user.membershipStatus===true) { %>
+				<button onclick="getMessageForm()">Create Message</button>
+				<% } %>
+			</div>
+			<div class="buttonContainer">
+				<% if (!user) { %>
+				<button onclick="gotoLogin()">Login</button>
+				<% } %>
+				<button onclick="gotoIndex()">Index</button>
+			</div>
+		</div>
+		<%- include('footer.ejs') %>
+		<script>
+			function getMessageForm() {
+				window.location.href = "/messageform";
+			}
+			function gotoIndex() {
+				window.location.href = "/index";
+			}
+			function gotoLogin() {
+				window.location.href = "/login";
+			}
+		</script>
+	</body>
+</html>

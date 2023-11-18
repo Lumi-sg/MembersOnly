@@ -1,0 +1,13 @@
+
+				<% if (messages) { %>
+				<ul>
+					<% messages.forEach((message) => { %>
+					<li><%= message.title %></li>
+					<li><%= message.content %></li>
+					<li><%= message.timeposted %></li>
+					<li><%= message.author %></li>
+					<% }); %>
+				</ul>
+				<% } else { %>
+				<p>No messages found.</p>
+				<% } %>
