@@ -35,6 +35,14 @@ router.get("/membership", (req: express.Request, res: express.Response) => {
 
 router.post("/membership", userController.membership_user_post);
 
+router.get("/admin", (req: express.Request, res: express.Response) => {
+	const user = req.user;
+
+	res.render("admin", { user });
+});
+
+router.post("/admin", userController.admin_user_post);
+
 router.get("/index", (req: express.Request, res: express.Response) => {
 	res.render("index");
 });

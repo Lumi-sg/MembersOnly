@@ -90,7 +90,23 @@ export const membership_user_post = asyncHandler(
 
 			res.redirect("/index");
 		} else {
-			res.redirect("/login");
+			res.redirect("/membership");
+		}
+	}
+);
+
+export const admin_user_post = asyncHandler(
+	async (req: express.Request, res: express.Response) => {
+		const adminPassword = "deepseadiving";
+		const submittedPassword = req.body.password;
+		const user = req.user as UserDocument;
+
+		if (submittedPassword === adminPassword) {
+			user.adminStatus = true;
+			await user.save();
+			res.redirect("/index");
+		} else {
+			res.redirect("/admin");
 		}
 	}
 );
