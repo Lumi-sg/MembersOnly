@@ -45,8 +45,20 @@
 				<p style="color: red"><%= errorMessage %></p>
 				<% } %>
 				<button type="submit">Login</button>
+				<button
+					type="button"
+					class="signupButton"
+					onclick="gotoSignup()"
+				>
+					Signup Page
+				</button>
 			</form>
 		</div>
 		<%- include('footer.ejs') %>
+		<script>
+			function gotoSignup() {
+				window.location.href = "/signup";
+			}
+		</script>
 	</body>
 </html>

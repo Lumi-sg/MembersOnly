@@ -80,3 +80,14 @@ button:hover {
 	display: flex;
 	justify-content: space-around;
 }
+
+.messageForm {
+	width: 50%;
+}
+.contentField {
+	width: 100%;
+}
+
+.titleField {
+	width: 35%;
+}

@@ -1,6 +1,7 @@
 import express from "express";
 import "express-session";
 import passport from "passport";
+import * as messageController from "../controllers/messageController";
 import * as userController from "../controllers/userController";
 declare module "express-session" {
 	export interface SessionData {
@@ -47,6 +48,12 @@ router.get("/index", (req: express.Request, res: express.Response) => {
 	const user = req.user;
 	res.render("index", { user });
 });
+
+//message routes
+
+router.get("/messages", messageController.messages_get);
+
+router.get("/messageform", messageController.messageform_get);
 
 router.get(
 	"/logout",
