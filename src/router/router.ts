@@ -44,7 +44,8 @@ router.get("/admin", (req: express.Request, res: express.Response) => {
 router.post("/admin", userController.admin_user_post);
 
 router.get("/index", (req: express.Request, res: express.Response) => {
-	res.render("index");
+	const user = req.user;
+	res.render("index", { user });
 });
 
 router.get(

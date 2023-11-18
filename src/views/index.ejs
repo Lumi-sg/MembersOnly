@@ -10,8 +10,13 @@
 	</head>
 	<body>
 		<div class="mainContainer">
+			<% if (user) { %>
+			<h3>Hello, <%= user.username %></h3>
+			<%} %> <% if (user && user.membershipStatus===false) { %>
 			<button onclick="gotoMembershipPage()">Membership</button>
-			<button onclick="gotoAdminPage()">Admin Page</button>
+			<% } %> <% if (user && user.adminStatus===false) { %>
+			<button onclick="gotoAdminPage()">Admin</button>
+			<% } %>
 			<button onclick="gotoMessages()">Messages</button>
 			<button onclick="logOut()">Logout</button>
 		</div>
