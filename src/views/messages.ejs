@@ -12,12 +12,24 @@
 		<div class="mainContainer">
 			<% if (user) { %>
 			<h3>Hello, <%= user.username %></h3>
-			<%} %>
-			<div class="messageContainer">
-				<% if (user.membershipStatus===true) { %>
-				<button onclick="getMessageForm()">Create Message</button>
-				<% } %>
-			</div>
+			<% if (user.membershipStatus === true) { %>
+			<button onclick="getMessageForm()">Create Message</button>
+			<% } %> <% if (messages && messages.length > 0) { %>
+			<ul>
+				<% messages.forEach((message) => { %>
+				<li>Title: <%- message.title %></li>
+				<li>Message: <%- message.content %></li>
+				<li>Posted: <%- message.timePosted %></li>
+				<li>By: <%- message.author.username %></li>
+				<% if (user.adminStatus === true) { %>
+
+				<a href="/message/<%= message._id %>/delete"> Delete message </a>
+
+				<% } %> <% }); %>
+			</ul>
+			<% } else { %>
+			<p>No messages found.</p>
+			<% } %> <% } %>
 			<div class="buttonContainer">
 				<% if (!user) { %>
 				<button onclick="gotoLogin()">Login</button>

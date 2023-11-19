@@ -8,7 +8,7 @@ export type MessageDocument = Document & {
 	title: string;
 	content: string;
 	timePosted: string;
-	author: UserDocument["_id"];
+	author: UserDocument;
 };
 
 const MessageSchema = new Schema<MessageDocument>({

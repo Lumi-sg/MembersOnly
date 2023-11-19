@@ -9,7 +9,13 @@ import { UserDocument, UserModel } from "../models/User";
 export const messages_get = asyncHandler(
 	async (req: express.Request, res: express.Response) => {
 		const user = req.user;
-		res.render("messages", { user });
+		const messages = await MessageModel.find()
+			.sort({ timePosted: -1 })
+			.populate("author");
+
+		console.log("Populated Messages:", messages);
+
+		res.render("messages", { user, messages });
 	}
 );
 
@@ -30,7 +36,7 @@ export const messageform_post = [
 		.trim()
 		.isLength({ min: 2, max: 144 })
 		.escape()
-		.withMessage("MEssage must be between 2 and 144 characters."),
+		.withMessage("Message must be between 2 and 144 characters."),
 	asyncHandler(async (req: express.Request, res: express.Response) => {
 		try {
 			const errors = validationResult(req);
