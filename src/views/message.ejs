@@ -1,0 +1,13 @@
+<li class="message">
+	<h4>Title: <%- message.title %></h4>
+	<p>Message: <%- message.content %></p>
+	<p>Posted: <%- message.timePosted %></p>
+	<p>By: <%- message.author.username %></p>
+	<% if (user.adminStatus === true) { %>
+	<a
+		class="deleteLink"
+		href="/message/<%= message._id %>/delete"
+		>Delete message</a
+	>
+	<% } %>
+</li>
