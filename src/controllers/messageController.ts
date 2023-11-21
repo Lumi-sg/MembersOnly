@@ -72,16 +72,24 @@ export const messageform_post = [
 
 export const message_delete_post = asyncHandler(
 	async (req: express.Request, res: express.Response) => {
-		try {
-			const messageID = req.params.id;
-
-			await MessageModel.findByIdAndDelete(messageID);
-
-			console.log(`Message ${messageID} deleted`);
+		const user = req.user as UserDocument;
+		if (user.adminStatus === false) {
+			console.log(`${user.username} does not have privileges for that action.`);
 			res.redirect("/messages");
-		} catch (error) {
-			console.error("Error during message deletion:", error);
-			res.status(500).send("Internal Server Error");
+
+			return;
+		} else {
+			try {
+				const messageID = req.params.id;
+
+				await MessageModel.findByIdAndDelete(messageID);
+
+				console.log(`Message ${messageID} deleted`);
+				res.redirect("/messages");
+			} catch (error) {
+				console.error("Error during message deletion:", error);
+				res.status(500).send("Internal Server Error");
+			}
 		}
 	}
 );
