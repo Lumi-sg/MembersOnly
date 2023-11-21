@@ -19,8 +19,13 @@ export const messages_get = asyncHandler(
 
 export const messageform_get = asyncHandler(
 	async (req: express.Request, res: express.Response) => {
-		const user = req.user;
-		res.render("messageform", { errors: [], user });
+		const user = req.user as UserDocument;
+		if (user.membershipStatus === false) {
+			console.log(`${user.username} does not have privileges for that action.`);
+			res.redirect("/messages");
+		} else {
+			res.render("messageform", { errors: [], user });
+		}
 	}
 );
 
