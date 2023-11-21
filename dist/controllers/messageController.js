@@ -17,7 +17,13 @@ exports.messages_get = (0, express_async_handler_1.default)(async (req, res) => 
 });
 exports.messageform_get = (0, express_async_handler_1.default)(async (req, res) => {
     const user = req.user;
-    res.render("messageform", { errors: [], user });
+    if (user.membershipStatus === false) {
+        console.log(`${user.username} does not have privileges for that action.`);
+        res.redirect("/messages");
+    }
+    else {
+        res.render("messageform", { errors: [], user });
+    }
 });
 exports.messageform_post = [
     (0, express_validator_1.body)("title")
