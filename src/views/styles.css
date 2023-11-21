@@ -47,6 +47,7 @@ button {
 	border-radius: 4px;
 	cursor: pointer;
 	width: 8rem;
+	margin-top: 0.25rem;
 }
 
 button:hover {
@@ -90,4 +91,12 @@ button:hover {
 
 .titleField {
 	width: 35%;
+}
+
+.hintContainer {
+	margin-top: 1rem;
+}
+
+.hintText {
+	font-size: x-small;
 }
