@@ -22,6 +22,7 @@
 		"@types/mongoose": "^5.11.97",
 		"cookie-parser": "^1.4.6",
 		"cookieparser": "^0.1.0",
+		"express-session": "^1.17.3",
 		"morgan": "^1.10.0",
 		"nodemon": "^3.0.1",
 		"ts-node": "^10.9.1",
