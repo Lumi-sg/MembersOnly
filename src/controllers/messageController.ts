@@ -13,8 +13,6 @@ export const messages_get = asyncHandler(
 			.sort({ timePosted: -1 })
 			.populate("author");
 
-		console.log("Populated Messages:", messages);
-
 		res.render("messages", { user, messages });
 	}
 );
@@ -71,3 +69,19 @@ export const messageform_post = [
 		}
 	}),
 ];
+
+export const message_delete_post = asyncHandler(
+	async (req: express.Request, res: express.Response) => {
+		try {
+			const messageID = req.params.id;
+
+			await MessageModel.findByIdAndDelete(messageID);
+
+			console.log(`Message ${messageID} deleted`);
+			res.redirect("/messages");
+		} catch (error) {
+			console.error("Error during message deletion:", error);
+			res.status(500).send("Internal Server Error");
+		}
+	}
+);
