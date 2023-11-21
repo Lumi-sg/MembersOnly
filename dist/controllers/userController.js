@@ -12,13 +12,13 @@ const User_1 = require("../models/User");
 exports.create_user_post = [
     (0, express_validator_1.body)("username")
         .trim()
-        .isLength({ min: 2, max: 25 })
         .escape()
+        .isLength({ min: 2, max: 25 })
         .withMessage("Username must be between 2 and 25 characters."),
     (0, express_validator_1.body)("password")
         .trim()
-        .isLength({ min: 6, max: 25 })
         .escape()
+        .isLength({ min: 6, max: 25 })
         .withMessage("Password must be between 6 and 25 characters."),
     (0, express_async_handler_1.default)(async (req, res) => {
         try {

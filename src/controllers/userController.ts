@@ -8,13 +8,13 @@ import { UserDocument, UserModel } from "../models/User";
 export const create_user_post = [
 	body("username")
 		.trim()
-		.isLength({ min: 2, max: 25 })
 		.escape()
+		.isLength({ min: 2, max: 25 })
 		.withMessage("Username must be between 2 and 25 characters."),
 	body("password")
 		.trim()
-		.isLength({ min: 6, max: 25 })
 		.escape()
+		.isLength({ min: 6, max: 25 })
 		.withMessage("Password must be between 6 and 25 characters."),
 
 	asyncHandler(async (req: express.Request, res: express.Response) => {
