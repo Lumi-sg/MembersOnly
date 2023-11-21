@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Membership Page</title>
+	</head>
+	<link
+		rel="stylesheet"
+		href="/styles.css"
+	/>
+	<body>
+		<div class="mainContainer">
+			<% if (user) { %> <% if (user.membershipStatus===true) { %>
+			<h2>You are already a member!</h2>
+			<button onclick="gotoIndex()">Index</button>
+			<% } else { %>
+			<p>Hello, <strong><%= user.username %></strong>!</p>
+			<form
+				action="/membership"
+				method="post"
+			>
+				<label for="password">Membership password:</label>
+				<input
+					type="password"
+					id="password"
+					name="password"
+					required
+				/>
+
+				<button type="submit">Submit</button>
+				<br />
+				<div class="hintContainer">
+					<span class="hintText"
+						>The password is in the project repository found below.</span
+					>
+				</div>
+			</form>
+
+			<% } %> <% } else { %>
+			<h2>You must login first!</h2>
+			<button
+				type="button"
+				class="loginButton"
+				onclick="goToLogin()"
+			>
+				Login Page
+			</button>
+			<% } %>
+		</div>
+		<%- include('footer.ejs') %>
+		<script>
+			function goToLogin() {
+				console.log("Button clicked!");
+				window.location.href = "/login";
+			}
+			function gotoIndex() {
+				window.location.href = "/index";
+			}
+		</script>
+	</body>
+</html>

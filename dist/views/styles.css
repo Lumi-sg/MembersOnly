@@ -1,0 +1,102 @@
+body {
+	font-family: Arial, sans-serif;
+	background-color: #101010;
+	margin: 0;
+	padding: 0;
+
+	color: #ffffff;
+	height: 100vh;
+}
+
+.mainContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 90%;
+	width: 100%;
+}
+
+form {
+	background-color: #202020;
+	padding: 2rem;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	width: 15%;
+}
+
+label {
+	display: block;
+	margin-bottom: 8px;
+}
+
+input {
+	width: 100%;
+	padding: 8px;
+	margin-bottom: 16px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+button {
+	background-color: #38833b;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	width: 8rem;
+	margin-top: 0.25rem;
+}
+
+button:hover {
+	background-color: #3dbb43;
+}
+.fa {
+	color: white;
+	transition: transform 0.3s ease-in-out;
+}
+.fa:hover {
+	transform: rotate(360deg) scale(1.2);
+}
+
+.footer {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: fixed;
+	bottom: 0;
+}
+
+.loginButton {
+	background-color: darkslategray;
+}
+.loginButton:hover {
+	background-color: rgb(73, 122, 122);
+}
+
+.buttonContainer {
+	display: flex;
+	justify-content: space-around;
+}
+
+.messageForm {
+	width: 50%;
+}
+.contentField {
+	width: 100%;
+}
+
+.titleField {
+	width: 35%;
+}
+
+.hintContainer {
+	margin-top: 1rem;
+}
+
+.hintText {
+	font-size: x-small;
+}

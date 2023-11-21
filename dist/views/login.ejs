@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Lumi's Message Board</title>
+	</head>
+	<link
+		rel="stylesheet"
+		href="/styles.css"
+	/>
+	<link
+		rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+	/>
+	<body>
+		<div class="mainContainer">
+			<h1>Lumi's Message Board</h1>
+			<h3>Login Form</h3>
+
+			<form
+				action="/login"
+				method="post"
+			>
+				<label for="username">Username:</label>
+				<input
+					type="text"
+					id="username"
+					name="username"
+					value="<%= typeof username !== 'undefined' ? username : '' %>"
+					required
+				/>
+
+				<label for="password">Password:</label>
+				<input
+					type="password"
+					id="password"
+					name="password"
+					required
+				/>
+				<% if (errorMessage) { %>
+				<p style="color: red"><%= errorMessage %></p>
+				<% } %>
+				<button type="submit">Login</button>
+				<button
+					type="button"
+					class="signupButton"
+					onclick="gotoSignup()"
+				>
+					Signup Page
+				</button>
+			</form>
+		</div>
+		<%- include('footer.ejs') %>
+		<script>
+			function gotoSignup() {
+				window.location.href = "/signup";
+			}
+		</script>
+	</body>
+</html>

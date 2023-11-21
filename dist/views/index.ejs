@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Index</title>
+	</head>
+	<body>
+		<div class="mainContainer">
+			<% if (user) { %>
+			<h3>Hello, <%= user.username %></h3>
+			<%} %> <% if (user && user.membershipStatus===false) { %>
+			<button onclick="gotoMembershipPage()">Membership</button>
+			<% } %> <% if (user && user.adminStatus===false) { %>
+			<button onclick="gotoAdminPage()">Admin</button>
+			<% } %>
+			<button onclick="gotoMessages()">Messages</button>
+			<button onclick="logOut()">Logout</button>
+		</div>
+		<%- include('footer.ejs') %>
+		<script>
+			function logOut() {
+				window.location.href = "/logout";
+			}
+			function gotoMembershipPage() {
+				window.location.href = "/membership";
+			}
+			function gotoMessages() {
+				// window.location.href = "/messages";
+				window.location.href = "/messages";
+			}
+			function gotoAdminPage() {
+				window.location.href = "/admin";
+			}
+		</script>
+	</body>
+</html>

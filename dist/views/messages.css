@@ -1,0 +1,34 @@
+.messageContainer {
+	margin-bottom: 20px;
+	min-width: 30%;
+}
+
+.messageContainer button {
+	margin-bottom: 10px;
+}
+
+.messageList {
+	list-style-type: none;
+	padding: 0;
+}
+
+.message {
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+.message h4 {
+	margin: 0;
+}
+
+.message p {
+	margin: 5px 0;
+}
+
+.deleteLink {
+	color: red;
+	text-decoration: none;
+	margin-left: 10px;
+}
